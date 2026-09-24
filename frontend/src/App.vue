@@ -99,7 +99,7 @@ function updateMarketStatus() {
     parts.push(hk ? '港股交易中' : '港股休市')
     parts.push(us ? '美股交易中' : '美股休市')
     marketStatus.value = parts.join(' | ')
-    WindowSetTitle("go-stock " + marketStatus.value + " " + officialStatement.value + "  「" + currentMotto.value + "」  [数据来源于网络，仅供参考；投资有风险，入市需谨慎]")
+    WindowSetTitle("AI赋能股票分析 " + marketStatus.value + " " + officialStatement.value + "  「" + currentMotto.value + "」  [数据来源于网络，仅供参考；投资有风险，入市需谨慎]")
   })
 }
 const menuOptions = ref([
@@ -898,27 +898,27 @@ const menuOptions = ref([
     key: 'settings',
     icon: renderIcon(SettingsOutline),
   },
-  {
-    label: () =>
-        h(
-            RouterLink,
-            {
-              to: {
-                name: 'about',
-                query: {
-                  name:"关于",
-                }
-              },
-              onClick: () => {
-                activeKey.value = 'about'
-              },
-            },
-            {default: () => '关于'}
-        ),
-    key: 'about',
-    icon: renderIcon(LogoGithub),
-    show: true,
-  },
+  // {
+  //   label: () =>
+  //       h(
+  //           RouterLink,
+  //           {
+  //             to: {
+  //               name: 'about',
+  //               query: {
+  //                 name:"关于",
+  //               }
+  //             },
+  //             onClick: () => {
+  //               activeKey.value = 'about'
+  //             },
+  //           },
+  //           {default: () => '关于'}
+  //       ),
+  //   key: 'about',
+  //   icon: renderIcon(LogoGithub),
+  //   show: true,
+  // },
   {
     show:false,
     label: () => h("a", {

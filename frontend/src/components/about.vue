@@ -233,10 +233,10 @@ EventsOn("updateNeedAdmin", (msg) => {
             <n-image width="100" :src="icon" />
             <h1>
               <n-badge v-if="!vipLevel"  :value="versionInfo" :offset="[80,10]"  type="success">
-                <n-gradient-text type="info" :size="50" >go-stock</n-gradient-text>
+                <n-gradient-text type="info" :size="50" >AI赋能股票分析</n-gradient-text>
               </n-badge>
               <n-badge v-if="vipLevel"  :value="versionInfo" :offset="[70,10]"  type="success">
-                <n-gradient-text :type="expired?'error':'warning'" :size="50" >go-stock</n-gradient-text><n-tag :bordered="false" size="small" type="warning">VIP{{vipLevel}}</n-tag>
+                <n-gradient-text :type="expired?'error':'warning'" :size="50" >AI赋能股票分析</n-gradient-text><n-tag :bordered="false" size="small" type="warning">VIP{{vipLevel}}</n-tag>
               </n-badge>
             </h1>
             <n-gradient-text  :type="expired?'error':'warning'" v-if="vipLevel" >vip到期时间：{{vipEndTime}}</n-gradient-text>
@@ -259,7 +259,7 @@ EventsOn("updateNeedAdmin", (msg) => {
               </p>
               <p v-if="updateLog">更新说明：{{updateLog}}</p>
               <p>项目社区：<a href="https://go-stock.sparkmemory.top/" target="_blank">https://go-stock.sparkmemory.top/</a></p>
-              <p>QQ交流群：<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=0YQ8qD3exahsD4YLNhzQTWe5ssstWC89&authKey=usOMMRFtIQDC%2FYcatHYapcxQbJ7PwXPHK9OypTXWzNjAq%2FRVvQu9bj2lRgb%2BSZ3p&noverify=0&group_code=491605333" target="_blank">491605333</a></p>
+              <p>QQ交流群：<a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=0YQ8qD3exahsD4YLNhzQTWe5ssstWC89&authKey=usOMMRFtIQDC%2FYcatHYapcxQbJ7PwXPHK9OypTXWzNjAq%2FRVvQu9bj2lRgb%2BSZ3p&noverify=0&group_code=" target="_blank"></a></p>
             </div>
           </n-space>
           <n-divider title-placement="center">支持💕开源</n-divider>

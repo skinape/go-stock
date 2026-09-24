@@ -309,11 +309,11 @@ function getHeight() {
 }
 
 function sendTestNotice() {
-  let markdown = "### go-stock test\n" + new Date()
+  let markdown = "### AI赋能股票分析 test\n" + new Date()
   let msg = '{' +
       '     "msgtype": "markdown",' +
       '     "markdown": {' +
-      '         "title":"go-stock' + new Date() + '",' +
+      '         "title":"AI赋能股票分析' + new Date() + '",' +
       '         "text": "' + markdown + '"' +
       '     },' +
       '      "at": {' +

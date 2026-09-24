@@ -1390,7 +1390,7 @@ func MonitorAiRecommendStockPrices(a *App) {
 				plainContent := fmt.Sprintf("%s(%s)\n当前价格: %.2f\n建议买入价: %.2f-%.2f",
 					aiStock.StockName, aiStock.StockCode, currentPrice, aiStock.RecommendBuyPriceMin, aiStock.RecommendBuyPriceMax)
 				if a.canSendAlert(buyAlertKey, 5*time.Minute) {
-					go data.NewAlertWindowsApi("go-stock价格预警", title, content, "").SendNotification()
+					go data.NewAlertWindowsApi("AI赋能股票分析价格预警", title, content, "").SendNotification()
 					go data.NewDingDingAPI().SendToDingDing(title, content)
 					go runtime.EventsEmit(a.ctx, "newsPush", map[string]any{
 						"time":    title,
@@ -1422,7 +1422,7 @@ func MonitorAiRecommendStockPrices(a *App) {
 				plainContent := fmt.Sprintf("%s(%s)\n当前价格: %.2f\n建议止盈价: %.2f-%.2f",
 					aiStock.StockName, aiStock.StockCode, currentPrice, aiStock.RecommendStopProfitPriceMin, aiStock.RecommendStopProfitPriceMax)
 				if a.canSendAlert(profitAlertKey, 5*time.Minute) {
-					go data.NewAlertWindowsApi("go-stock价格预警", title, content, "").SendNotification()
+					go data.NewAlertWindowsApi("AI赋能股票分析价格预警", title, content, "").SendNotification()
 					go data.NewDingDingAPI().SendToDingDing(title, content)
 					go runtime.EventsEmit(a.ctx, "newsPush", map[string]any{
 						"time":    title,
@@ -1455,7 +1455,7 @@ func MonitorAiRecommendStockPrices(a *App) {
 				plainContent := fmt.Sprintf("%s(%s)\n当前价格: %.2f\n建议止损价: %s",
 					aiStock.StockName, aiStock.StockCode, currentPrice, aiStock.RecommendStopLossPrice)
 				if a.canSendAlert(stopLossAlertKey, 5*time.Minute) {
-					go data.NewAlertWindowsApi("go-stock价格预警", title, content, "").SendNotification()
+					go data.NewAlertWindowsApi("AI赋能股票分析价格预警", title, content, "").SendNotification()
 					go data.NewDingDingAPI().SendToDingDing(title, content)
 					go runtime.EventsEmit(a.ctx, "newsPush", map[string]any{
 						"time":    title,
@@ -1539,7 +1539,7 @@ func MonitorFollowedStockCostPrices(a *App) {
 				plainContent := fmt.Sprintf("%s(%s)\n当前价格: %.2f\n成本价: %.2f\n亏损: %.2f%%",
 					followedStock.Name, followedStock.StockCode, currentPrice, costPrice, dropPercent)
 				if a.canSendAlert(alertKey, 5*time.Minute) {
-					go data.NewAlertWindowsApi("go-stock价格预警", title, content, "").SendNotification()
+					go data.NewAlertWindowsApi("AI赋能股票分析价格预警", title, content, "").SendNotification()
 					go data.NewDingDingAPI().SendToDingDing(title, content)
 					go runtime.EventsEmit(a.ctx, "newsPush", map[string]any{
 						"time":    title,

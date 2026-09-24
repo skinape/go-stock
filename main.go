@@ -161,7 +161,7 @@ func main() {
 	log.SugaredLogger.Info("screen resolution: " + convertor.ToString(width) + "x" + convertor.ToString(height))
 	log.SugaredLogger.Info("window size: " + convertor.ToString(appWidth) + "x" + convertor.ToString(appHeight))
 
-	// 作为 go-stock 子组件启动独立 Web 服务
+	// 作为 AI赋能股票分析 子组件启动独立 Web 服务
 	// 端口默认由 AI_ASSISTANT_WEB_ADDR 决定。
 	go func() {
 		if err := assistantweb.Start(); err != nil {
@@ -171,7 +171,7 @@ func main() {
 
 	// Create application with options
 	err = wails.Run(&options.App{
-		Title: "go-stock：AI赋能股票分析✨ " + OFFICIAL_STATEMENT,
+		Title: "AI赋能股票分析✨ " + OFFICIAL_STATEMENT,
 		// 默认窗口大小：自适应但保留明显边距
 		Width:  appWidth,
 		Height: appHeight,
@@ -224,8 +224,8 @@ func main() {
 			WebviewIsTransparent: true,
 			WindowIsTranslucent:  true,
 			About: &mac.AboutInfo{
-				Title:   "go-stock",
-				Message: "go-stock：AI赋能股票分析✨ ",
+				Title:   "AI赋能股票分析",
+				Message: "AI赋能股票分析✨ ",
 				Icon:    icon,
 			},
 		},

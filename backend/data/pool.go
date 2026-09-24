@@ -18,6 +18,9 @@ type BrowserPool struct {
 
 // NewBrowserPool 创建新的浏览器池
 func NewBrowserPool(size int) *BrowserPool {
+	if size <= 0 {
+		size = 1
+	}
 	pool := make(chan *context.Context, size)
 	for i := 0; i < size; i++ {
 		path := GetSettingConfig().BrowserPath
@@ -25,11 +28,11 @@ func NewBrowserPool(size int) *BrowserPool {
 		if crawlTimeOut < 15 {
 			crawlTimeOut = 30
 		}
+		ctx, cancel := context.WithTimeout(context.Background(), time.Duration(crawlTimeOut)*time.Second)
+		// Note: cancel is intentionally not called here as chromedp handles
+		// context cleanup via chromedp.Cancel() in Put/Close methods
+		_ = cancel
 		if path != "" {
-			ctx, cancel := context.WithTimeout(context.Background(), time.Duration(crawlTimeOut)*time.Second)
-			// Note: cancel is intentionally not called here as chromedp handles
-			// context cleanup via chromedp.Cancel() in Put/Close methods
-			_ = cancel
 			ctx, _ = chromedp.NewExecAllocator(
 				ctx,
 				chromedp.ExecPath(path),
@@ -61,9 +64,9 @@ func NewBrowserPool(size int) *BrowserPool {
 				chromedp.Flag("password-store", "basic"),
 				chromedp.Flag("use-mock-keychain", true),
 			)
-			ctx, _ = chromedp.NewContext(ctx, chromedp.WithLogf(logger.SugaredLogger.Infof))
-			pool <- &ctx
 		}
+		ctx, _ = chromedp.NewContext(ctx, chromedp.WithLogf(logger.SugaredLogger.Infof))
+		pool <- &ctx
 	}
 	return &BrowserPool{
 		pool: pool,

@@ -69,7 +69,7 @@ func (a *App) startup(ctx context.Context) {
 	// 创建 macOS 托盘
 	go func() {
 		// 使用 Beeep 库替代 Windows 的托盘库
-		err := beeep.Notify("go-stock", "应用程序已启动", "")
+		err := beeep.Notify("AI赋能股票分析", "应用程序已启动", "")
 		if err != nil {
 			log.Fatalf("系统通知失败: %v", err)
 		}
@@ -101,7 +101,7 @@ func setUpScreen(a *App) {
 
 // OnSecondInstanceLaunch 处理第二实例启动时的通知
 func OnSecondInstanceLaunch(secondInstanceData options.SecondInstanceData) {
-	err := beeep.Notify("go-stock", "程序已经在运行了", "")
+	err := beeep.Notify("AI赋能股票分析", "程序已经在运行了", "")
 	if err != nil {
 		logger.SugaredLogger.Error(err)
 	}
@@ -150,10 +150,10 @@ func MonitorStockPrices(a *App) {
 	// 计算总收益并更新状态
 	if total != 0 {
 		// 使用通知替代 systray 更新 Tooltip
-		title := "go-stock " + time.Now().Format(time.DateTime) + fmt.Sprintf("  %.2f¥", total)
+		title := "AI赋能股票分析 " + time.Now().Format(time.DateTime) + fmt.Sprintf("  %.2f¥", total)
 
 		// 发送通知显示实时数据
-		err := beeep.Notify("go-stock", title, "")
+		err := beeep.Notify("AI赋能股票分析", title, "")
 		if err != nil {
 			logger.SugaredLogger.Errorf("发送通知失败: %v", err)
 		}
@@ -169,7 +169,7 @@ func onReady(a *App) {
 	logger.SugaredLogger.Infof("onReady")
 
 	// 使用 Beeep 发送通知
-	err := beeep.Notify("go-stock", "应用程序已准备就绪", "")
+	err := beeep.Notify("AI赋能股票分析", "应用程序已准备就绪", "")
 	if err != nil {
 		log.Fatalf("系统通知失败: %v", err)
 	}
@@ -200,7 +200,7 @@ func (a *App) beforeClose(ctx context.Context) (prevent bool) {
 	// 在 macOS 上使用 MessageDialog 显示确认窗口
 	dialog, err := runtime.MessageDialog(ctx, runtime.MessageDialogOptions{
 		Type:         runtime.QuestionDialog,
-		Title:        "go-stock",
+		Title:        "AI赋能股票分析",
 		Message:      "确定关闭吗？",
 		Buttons:      []string{"确定", "取消"},
 		Icon:         icon2,
